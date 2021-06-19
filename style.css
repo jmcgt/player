@@ -2,6 +2,7 @@
 body, p, h1, ul, li, blockquote{
     margin: 0px;
     padding: 0px;
+    box-sizing: border-box;
 }
 
 li{
@@ -18,23 +19,37 @@ img{
 }
 
 body{
-    display: flex;
+    display: grid;
     justify-content: center;
-    align-items: center;
+    align-content: center;
     min-height: 100vh;
-    background: #302B2B;
-    font-family: 'Vollkorn', serif;
+    background: white;
+    font-family: Impact, Arial, sans-serif;
 }
 
 /* ESTILOS */
 
-@keyframes girar{
-    100%{
-        transform: rotate(360deg);
-    }
+.container{
+    position:relative;
+    width: 500px;
+    height: 500px;
 }
 
-svg{
-    width: 25vh;
-    height: 25vh;
+.container video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container .text{
+    text-align: center;
+    line-height: 500px;
+    background: white;
+    mix-blend-mode: screen;
+    text-transform: uppercase;
+    font-size: 10rem;
+    letter-spacing: 7px;
+    font-weight: bolder;
 }
