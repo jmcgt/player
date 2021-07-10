@@ -1,7 +1,7 @@
 <DOCTYPE html>
 <html>
     <head>
-        <title>SVG Gradient</title>
+        <title>PlaybackRate</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -10,18 +10,86 @@
     </head>
     <body>
         <div class="container">
-            <video autoplay loop muted id="video1">
-                <source src="lava.mp4" type="video/mp4">
+            <video loop id="video1">
+                <source src="video2.mp4" type="video/mp4">
             </video>
-            <div class="text">
-                <p>lava</p>
+            <div class="botoes">
+                <button class="controle" onclick="decrease()">
+                    <i class="fas fa-backward"></i>
+                    <span id="speedDown"></span>
+                </button>
+                <button class="controle" onclick="playPause()">
+                    <i class="fas fa-play" id="playpause_icon"></i>
+                    <span id="speedDown"></span>
+                </button>
+                <button class="controle" onclick="increase()">
+                    <i class="fas fa-forward"></i>
+                    <span id="speedUp"></span>
+                </button>
+                <button class="controle" onclick="forward()">
+                    <i class="fas fa-undo"></i>
+                    <small>10</small>
+                </button>
+                <button class="controle" onclick="forward()">
+                    <i class="fas fa-redo"></i>
+                    <small>10</small>
+                </button>                
             </div>
         </div>
     </body>
     <script>
-        var media = document.getElementById("video1");
         
-         
-        media.playbackRate = 5.0;
+        let media = document.querySelector('video');
+        let speedUp = document.querySelector('#speedUp');
+        let speedDown = document.querySelector('#speedDown');
+        let icone = document.querySelector('#playpause_icon');
+  
+        media.load();
+
+        function forward() {
+            if(!media.paused)
+                media.currentTime += 10;
+        }
+
+        function rewind() {
+          if(!media.paused)
+                media.currentTime -= 10;
+        }
+        
+        function playPause()
+        {
+            if(!media.paused)
+            {
+                media.pause();
+                icone.classList.remove('fa-pause');
+                icone.classList.add('fa-play');
+            }
+            else
+            {
+                media.play();
+                icone.classList.remove('fa-play');
+                icone.classList.add('fa-pause');
+            }
+        }
+  
+        function increase(elem) {
+            if(!media.paused)
+            {
+                if(media.playbackRate<2)
+                    media.playbackRate+=.25;
+
+                speedUp.innerHTML = media.playbackRate+'x';   
+            }            
+        }
+  
+        function decrease(elem) {
+            if(!media.paused)
+            {
+                if (media.playbackRate>.25)
+                media.playbackRate-=.25;
+            
+                speedDown.innerHTML = media.playbackRate+'x';   
+            }
+        }
     </script> 
 </html>

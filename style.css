@@ -23,7 +23,7 @@ body{
     justify-content: center;
     align-content: center;
     min-height: 100vh;
-    background: white;
+    background: #302B2B;
     font-family: Impact, Arial, sans-serif;
 }
 
@@ -43,13 +43,42 @@ body{
     height: 100%;
 }
 
-.container .text{
-    text-align: center;
-    line-height: 500px;
-    background: white;
-    mix-blend-mode: screen;
+.botoes{
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 109px;
+    padding: 10px;
+    width: 500px;
+    border-top: 2px solid transparent;
+    background: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(50px);
+    background-clip: padding-box;
+    opacity: 0;
+    transition: ease-in .5s;
+}
+
+.controle{
+    opacity: 0;
+    transition: ease-in .5s;
+}
+
+.botoes:hover .controle, .botoes:hover
+{
+    opacity: 1;
+}
+
+.botoes button{
+    border: none;
+    background: transparent;
+    padding: 10px 20px;
+    color: white;
     text-transform: uppercase;
-    font-size: 10rem;
-    letter-spacing: 7px;
-    font-weight: bolder;
+    cursor: pointer;
+    font-size: .75em;
+}
+
+button + button{
+    margin-left: 5px;
 }
